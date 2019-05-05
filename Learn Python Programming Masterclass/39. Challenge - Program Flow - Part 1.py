@@ -24,3 +24,33 @@
 # This challenge is intended to practise for loops and if/else statements, so although
 # you could use other techniques (such as splitting the string up), that's not the
 # approach we're looking for here.
+import sys
+address = str(input("Please add the address here: "))
+segmentCount = 1
+segmentLength = []
+counter = ""
+validchars = ["0","1","2","3","4","5","6","7","8","9","."]
+
+for i in address:
+    if i not in validchars:
+        print("This doesn't look like a valid IP address.")
+        sys.exit(0)
+
+if len(address) == 0:
+    print("The address contains 0 segments.")
+else:
+    if "." not in address:
+        print("This doesn't look like an IP address.")
+        segmentCount = 0
+    else:
+        for i in address:
+            if i != ".":
+                counter += i
+            elif i == ".":
+                segmentLength.append(len(counter))
+                counter = ""
+                segmentCount += 1
+        segmentLength.append((len(counter)))
+        print("The address contains {} segments.".format(segmentCount))
+        for count, item in enumerate(segmentLength, start=1):
+            print("Segment {0} is {1} characters long.".format(count, item))
