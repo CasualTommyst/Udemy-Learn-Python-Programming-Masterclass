@@ -34,7 +34,7 @@ guess = int(input())
 if guess != 5:
     if guess < 5:
         print("Please guess higher.")
-    else: # guess must be greater than 5
+    else:  # guess must be greater than 5
         print("Please guess lower.")
     guess2 = int(input())
     if guess2 == 5:
